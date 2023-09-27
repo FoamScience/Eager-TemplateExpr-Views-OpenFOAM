@@ -1,0 +1,4 @@
+$(FOAM_FOAMUT)/tests/testDriver.C
+expressionTemplatesVsViewsTests.C
+
+EXE = testDriver
