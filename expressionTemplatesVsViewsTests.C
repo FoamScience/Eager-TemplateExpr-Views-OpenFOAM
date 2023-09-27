@@ -80,9 +80,9 @@ Field<U> expressionTemplatesEvaluation(const scalarField& r) {
     auto mprw = BinaryContainerExpression(mpr, w, multiply);
     auto mprwdm = BinaryContainerExpression(mpr, m, divide);
     auto vfv = BinaryContainerExpression(mwdr, mprwdm, add);
-    //for(int i = 0; i<vf.size(); ++i) {
-    //    vf[i] = vfv[i];
-    //}
+    for(int i = 0; i<vf.size(); ++i) {
+        vf[i] = vfv[i];
+    }
     return vf;
 }
 
@@ -109,9 +109,9 @@ Field<T> viewsEvaluation(const scalarField& r) {
     auto mprw = zip_transform(std::multiplies<>{}, mpr, w);
     auto mprwdm = zip_transform(std::divides<>{}, mprw, m);
     auto vfv = zip_transform(std::plus<>{}, mwdr, mprwdm);
-    //for(int i = 0; i<vf.size(); ++i) {
-    //    vf[i] = vfv[i];
-    //}
+    for(int i = 0; i<vf.size(); ++i) {
+        vf[i] = vfv[i];
+    }
     return vf;
 }
 
@@ -140,8 +140,8 @@ TEMPLATE_TEST_CASE
         },
         "Field elements must approximately match"
     );
-    //REQUIRE_THAT(ete, testExp);
-    //REQUIRE_THAT(vw, testExp);
+    REQUIRE_THAT(ete, testExp);
+    REQUIRE_THAT(vw, testExp);
     BENCHMARK("Original eager evaluation") {
         return eagerEvaluation<TestType>(r);
     };

@@ -10,7 +10,7 @@ Other factors that may affect the decision to switch:
 - Planning to use multi-threading?
 - Computation on GPU
 
-> **This requires G++13 or higher and we need to link against `-std=c++23`**
+> **This requires G++13 or higher and we need to link against `-std=c++23`. And the benchmark include some copying time in lazy evaluation test cases** (so they are in fact faster)
 
 > **Also, OpenFOAM code needs to be fixed (very minor things) to compile with C++23**
 
