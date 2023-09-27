@@ -23,9 +23,9 @@ jobs:
         run: |
           source /usr/lib/openfoam/openfoam2206/etc/bashrc
           mkdir -p $FOAM_USER_LIBBIN
-          sed -i 's/mpirun/mpirun --oversubscribe/g' Alltest
           export FOAM_FOAMUT=/tmp/foamut
           git clone https://github.com/FoamScience/foamUT $FOAM_FOAMUT
+          sed -i 's/mpirun/mpirun --oversubscribe/g' $FOAM_FOAMUT/Alltest
           ln -s "$PWD" "$FOAM_FOAMUT/tests/implementations"
           cd $FOAM_FOAMUT || exit 1
           rm -rf tests/exampleTests
